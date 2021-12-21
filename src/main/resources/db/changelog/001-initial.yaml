@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001.1
+      author: are
+      changes:
+        - createTable:
+            tableName: authors
+            columns:
+              - column:
+                  name: ID
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: varchar(50)
+                  constraints:
+                    unique: false
+                    nullable: false
+  - changeSet:
+      id: 001.2
+      author: are
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: ID
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: TITLE
+                  type: varchar(50)
+                  constraints:
+                    unique: false
+                    nullable: false
+  - changeSet:
+      id: 001.3
+      author: are
+      changes:
+        - createTable:
+            tableName: authors_books
+            columns:
+              - column:
+                  name: AUTHOR_ID
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BOOK_ID
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false

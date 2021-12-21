@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002.1
+      author: are
+      changes:
+        loadUpdateData:
+          relativeToChangelogFile: true
+          file: ../csv/002-insert-initial-values-authors.csv
+          encoding: UTF-8
+          tableName: authors
+          primaryKey: ID
+          columns:
+            - column:
+                name: ID
+                type: UUID
+            - column:
+                name: NAME
+                type: STRING

@@ -1,0 +1,27 @@
+query GET_AUTHOR($id: ID) {
+    getAuthorById(id: $id) {
+        name
+    }
+}
+
+query GET_AUTHOR_BY_NAME($name: String) {
+    getAuthor(name: $name) {
+        name
+        books {
+            id
+            title
+        }
+    }
+}
+
+query GET_BOOKS_BY_AUTHOR($author: Author) {
+    getBooksByAuthor(author: $author) {
+        title
+    }
+}
+
+query GET_ALL_BOOKS {
+    getAllBooks {
+        title
+    }
+}

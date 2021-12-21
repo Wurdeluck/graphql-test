@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: graphql-test
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+
+server:
+  http2:
+    enabled: true
+
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+    # if you want to @ExceptionHandler annotation for custom GraphQLErrors
+    exception-handlers-enabled: true
+  graphiql:
+    props:
+      variables:
+        default-query: defaultQuery.graphql
+        variables: variables.graphql
+    enabled: true
