@@ -1,0 +1,4 @@
+extend type Query {
+    getAllBooks(skip: Int, take: Int): [Book]
+    getBooksByAuthor(id: ID!): [Book]
+}

@@ -1,7 +1,0 @@
-type Query {
-    getAuthorById(id: ID): Author
-    getAuthor(name: String): Author
-    getBookById(id: ID): Book
-    getAllBooks: [Book]
-    getBooksByAuthor(Author: AuthorType): Author
-}

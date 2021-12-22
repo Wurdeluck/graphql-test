@@ -1,0 +1,3 @@
+extend type Mutation {
+    saveBook(book: BookInput): Book
+}

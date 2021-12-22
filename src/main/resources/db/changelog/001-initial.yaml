@@ -10,6 +10,7 @@ databaseChangeLog:
                   name: ID
                   type: UUID
                   constraints:
+                    primaryKeyName: authors_pkey
                     primaryKey: true
                     nullable: false
               - column:
@@ -30,6 +31,7 @@ databaseChangeLog:
                   type: UUID
                   constraints:
                     primaryKey: true
+                    primaryKeyName: books_pkey
                     nullable: false
               - column:
                   name: TITLE
@@ -56,3 +58,33 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+  - changeSet:
+      id: 001.4
+      author: are
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: authors_books
+            constraintName: fk37ubsojm53cv47m4hxrk5oujh
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: authors
+            validate: true
+  - changeSet:
+      id: 001.5
+      author: are
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: book_id
+            baseTableName: authors_books
+            constraintName: fk37ubsojm53cv47m4hxrk5outt
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: books
+            validate: true
