@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.UUID;
 @Repository
 public interface BookRepository extends JpaRepository<Book, UUID> {
-//  @EntityGraph(value = "book-entity-graph")
 @Query(name = "Book.findWithAllBooks",
         value = "SELECT b FROM #{#entityName} b LEFT JOIN FETCH b.authors WHERE b.id = ?1 ")
   Optional<Book> findById(UUID id);

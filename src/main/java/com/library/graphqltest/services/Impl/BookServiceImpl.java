@@ -2,23 +2,20 @@ package com.library.graphqltest.services.Impl;
 
 import com.library.graphqltest.dto.BookInput;
 import com.library.graphqltest.entity.Author;
-import com.library.graphqltest.exceptions.ResourceNotFoundException;
 import com.library.graphqltest.entity.Book;
 import com.library.graphqltest.helper.MapperBook;
 import com.library.graphqltest.repository.AuthorRepository;
 import com.library.graphqltest.repository.BookRepository;
-import com.library.graphqltest.services.AuthorService;
 import com.library.graphqltest.services.BookService;
 import graphql.GraphQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -45,6 +42,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   public List<Book> getAll(Integer skip, Integer limit) {
+    log.info("Get all books by page info: skip:{}, limit:{}", skip, limit);
     return bookRepository.getAllPaged(skip == null ? DEFAULT_SKIP : skip, limit == null ? DEFAULT_LIMIT : limit);
   }
 
@@ -54,7 +52,9 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional
   public Book save(BookInput bookInput) {
+    log.info("Save book with title: ''{}'', author ids: ''{}''", bookInput.getTitle(), bookInput.getAuthorIds());
     List<Author> authors = findAuthorsById(bookInput.getAuthorIds());
     Book book = mapperBook.mapBookInputToBook(bookInput, authors);
     return bookRepository.save(book);

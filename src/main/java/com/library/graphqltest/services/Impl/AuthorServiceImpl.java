@@ -7,11 +7,12 @@ import com.library.graphqltest.helper.MapperAuthor;
 import com.library.graphqltest.repository.AuthorRepository;
 import com.library.graphqltest.repository.BookRepository;
 import com.library.graphqltest.services.AuthorService;
-import com.library.graphqltest.services.BookService;
 import graphql.GraphQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +44,9 @@ public class AuthorServiceImpl implements AuthorService {
   }
 
   @Override
+  @Transactional
   public Author save(AuthorInput authorInput) {
+    log.info("Save author with name: ''{}'', books: ''{}''", authorInput.getName(), authorInput.getBookIds());
     List<Book> books = findBooksById(authorInput.getBookIds());
     Author author = mapperAuthor.mapAuthorInputToAuthor(authorInput, books);
     return authorRepository.save(author);
