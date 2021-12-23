@@ -1,0 +1,5 @@
+query GET_AUTHOR {
+    getAuthorById(id: "8129b344-90fb-449b-9cfc-6ef36e453c4c") {
+        name
+    }
+}
