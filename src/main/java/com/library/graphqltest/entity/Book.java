@@ -3,27 +3,10 @@ package com.library.graphqltest.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-//@NamedEntityGraph(
-//        name = "book-entity-graph",
-//        attributeNodes = {
-//                @NamedAttributeNode("id"),
-//                @NamedAttributeNode("title"),
-//                @NamedAttributeNode(value = "authors", subgraph = "authors-subgraph"),
-//        },
-//        subgraphs = {
-//                @NamedSubgraph(
-//                        name = "authors-subgraph",
-//                        attributeNodes = {
-//                                @NamedAttributeNode("id"),
-//                                @NamedAttributeNode("name"),
-//                                @NamedAttributeNode("books")
-//                        }
-//                )
-//        }
-//)
 @Entity
 @Table(name = "books")
 public class Book {
@@ -39,8 +22,8 @@ public class Book {
   @Column(name = "title", nullable = false)
   private String title;
 
-  @ManyToMany(mappedBy = "books")
-  private List<Author> authors;
+  @ManyToMany(mappedBy = "books", cascade = CascadeType.PERSIST)
+  private List<Author> authors = new ArrayList<>();
 
   public UUID getId() {
     return id;
@@ -62,7 +45,12 @@ public class Book {
     return authors;
   }
 
+  public void addAuthor(Author author) {
+    authors.add(author);
+    author.getBooks().add(this);
+  }
+
   public void setAuthors(List<Author> authors) {
-    this.authors = authors;
+    authors.forEach(this::addAuthor);
   }
 }

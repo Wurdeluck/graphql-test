@@ -3,28 +3,11 @@ package com.library.graphqltest.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-//@NamedEntityGraph(
-//  name = "author-entity-graph",
-//  attributeNodes = {
-//    @NamedAttributeNode("id"),
-//    @NamedAttributeNode("name"),
-//    @NamedAttributeNode(value = "books", subgraph = "books-subgraph"),
-//  },
-//  subgraphs = {
-//    @NamedSubgraph(
-//      name = "books-subgraph",
-//      attributeNodes = {
-//        @NamedAttributeNode("id"),
-//        @NamedAttributeNode("title"),
-//        @NamedAttributeNode("authors")
-//      }
-//    )
-//  }
-//)
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -40,13 +23,12 @@ public class Author {
   @Column(name = "name", nullable = false)
   private String name;
 
-  @ManyToMany
-//  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany(cascade = CascadeType.PERSIST)
   @JoinTable(
           name = "authors_books",
           joinColumns = @JoinColumn(name = "author_id"),
           inverseJoinColumns = @JoinColumn(name = "book_id"))
-  private List<Book> books;
+  private List<Book> books = new ArrayList<>();
 
   public UUID getId() {
     return id;
