@@ -1,0 +1,15 @@
+{
+  "data": {
+    "saveAuthor": {
+      "name": "Writer 2 books",
+      "books": [
+        {
+          "title": "The Call of Cthulhu"
+        },
+        {
+          "title": "Roadside Picnic"
+        }
+      ]
+    }
+  }
+}

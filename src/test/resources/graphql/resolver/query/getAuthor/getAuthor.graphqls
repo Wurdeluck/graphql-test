@@ -1,0 +1,6 @@
+query GET_AUTHOR {
+    author(name: "S. Lem") {
+        id
+        name
+    }
+}

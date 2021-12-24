@@ -1,0 +1,14 @@
+databaseChangeLog:@SpringBootTest()
+
+  - include:
+      file: 001-initial-test.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 002-fill-table-authors-test.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 003-fill-table-books-test.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 004-fill-table-authors-books-test.yaml
+      relativeToChangelogFile: true

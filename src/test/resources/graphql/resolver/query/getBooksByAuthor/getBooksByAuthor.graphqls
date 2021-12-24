@@ -1,0 +1,5 @@
+query GET_BOOKS_BY_AUTHOR {
+    getBooksByAuthor(id: "8949454e-5e1f-44ab-a1c7-09524ddad93b") {
+        title
+    }
+}

@@ -1,0 +1,8 @@
+mutation SAVE_BOOK {
+    saveBook(book: {title: "The Ugly Swans", authorIds: ["8949454e-5e1f-44ab-a1c7-09524ddad93b","8604ed08-018e-40b9-ba54-a77485827472"]}) {
+        title
+        authors {
+            name
+        }
+    }
+}

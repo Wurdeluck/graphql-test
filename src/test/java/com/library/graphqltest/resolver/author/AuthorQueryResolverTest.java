@@ -22,19 +22,19 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 
+import static com.library.graphqltest.TestHelper.GRAPHQL_QUERY_REQUEST_PATH;
+import static com.library.graphqltest.TestHelper.GRAPHQL_QUERY_RESPONSE_PATH;
+
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
-@SpringBootTest(classes = GraphqlTestApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = GraphqlTestApplication.class)
 class AuthorQueryResolverIntegrationTest {
   @Autowired
   GraphQLTestTemplate graphQLTestTemplate;
 
   @ClassRule
   public static PostgreSQLContainer<TestContainerConfig> postgreSQLContainer = TestContainerConfig.getInstance();
-
-  private static final String GRAPHQL_QUERY_REQUEST_PATH = "graphql/resolver/query/{}.graphqls";
-  private static final String GRAPHQL_QUERY_RESPONSE_PATH = "graphql/resolver/query/{}.json";
 
   @Test
   @Transactional

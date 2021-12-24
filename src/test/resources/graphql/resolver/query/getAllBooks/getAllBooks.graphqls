@@ -1,0 +1,5 @@
+query GET_ALL_BOOKS {
+    getAllBooks {
+        title
+    }
+}

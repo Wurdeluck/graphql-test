@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         loadUpdateData:
           relativeToChangelogFile: true
-          file: ../csv/002-insert-initial-values-authors.csv
+          file: ../csv/002-insert-initial-values-authors-test.csv
           encoding: UTF-8
           tableName: authors
           primaryKey: ID

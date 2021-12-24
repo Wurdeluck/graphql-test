@@ -1,0 +1,15 @@
+{
+  "data": {
+    "saveBook": {
+      "title": "The Ugly Swans",
+      "authors": [
+        {
+          "name": "B. N. Strugatsky"
+        },
+        {
+          "name": "A. N. Strugatsky"
+        }
+      ]
+    }
+  }
+}

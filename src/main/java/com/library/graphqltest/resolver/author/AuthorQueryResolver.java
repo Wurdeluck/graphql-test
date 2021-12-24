@@ -23,7 +23,7 @@ public class AuthorQueryResolver implements GraphQLQueryResolver {
 //  }
 
   public Author getAuthor(String name) {
-    log.info(MessageFormat.format("Get author by name{0}", name));
+    log.info(MessageFormat.format("Get author by name: {0}", name));
     return authorService.getByName(name);
   }
 

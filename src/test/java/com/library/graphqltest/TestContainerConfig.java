@@ -1,5 +1,7 @@
 package com.library.graphqltest;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 public class TestContainerConfig extends PostgreSQLContainer<TestContainerConfig> {
@@ -20,6 +22,7 @@ public class TestContainerConfig extends PostgreSQLContainer<TestContainerConfig
     @Override
     public void start() {
         super.start();
+
         System.setProperty("DB_URL", container.getJdbcUrl());
         System.setProperty("DB_USERNAME", container.getUsername());
         System.setProperty("DB_PASSWORD", container.getPassword());
