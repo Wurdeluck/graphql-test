@@ -1,0 +1,12 @@
+{
+  "data": {
+    "getAllBooks": [
+      {
+        "title": "Roadside Picnic"
+      },
+      {
+        "title": "The Call of Cthulhu"
+      }
+    ]
+  }
+}
